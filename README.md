@@ -41,11 +41,6 @@ Here are some of the main features of the boilerplate:
 │   │   ├── fonts
 │   │   ├── img
 │   │   └── js
-│   ├── layouts
-│   │   ├── header.html
-│   │   └── footer.html
-│   ├── partials
-│   │   └── home.html
 │   ├── apple-touch-icon-precomposed.png
 │   ├── favicon.ico
 │   └── index.html
