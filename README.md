@@ -1,17 +1,17 @@
-# JSBoilerplate [![Build Status](https://travis-ci.org/Argetloum/AngularBoilerplate.png)](https://travis-ci.org/Argetloum/AngularBoilerplate)
+# JSBoilerplate [![Build Status](https://travis-ci.org/Argetloum/JSBoilerplate.png)](https://travis-ci.org/Argetloum/JSBoilerplate)
 
 Quick Front-End Boilerplate using jQuery and ES6 ready thanks traceur-compiler, Sass and Gulp.
 
-JavaScript task running, build processes, autominification and file concatenation, wrapped with an enhanced HTML5 boilerplated.
+JavaScript task running, build processes, auto-minification and file concatenation, wrapped with an enhanced HTML5 boilerplated.
 
-* Source: [github.com/Argetloum/AngularJSBoilerplate](http://github.com/Argetloum/AngularJSBoilerplate)
+* Source: [github.com/Argetloum/JSBoilerplate](https://github.com/Argetloum/JSBoilerplate)
 
 
 ## Jump start
 
 Get started with the boilerplate:
 
-1. Clone the git repo — `git clone https://github.com/Argetloum/AngularJSBoilerplate.git` and checkout the tagged release you need.
+1. Clone the git repo — `git clone https://github.com/Argetloum/JSBoilerplate.git` and checkout the tagged release you need.
 2. Execute in the shell `sudo npm install` to install each node.js dependencies, needed for [Gulp.](http://gulpjs.com/)
 3. Execute in the shell `bower install` to install each front-end dependencies.
 4. Execute in the shell `gulp` to generate the stylesheets and scripts files in the `app/assets/` folder.
