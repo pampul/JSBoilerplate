@@ -1,0 +1,32 @@
+{
+  "name": "AngularBoilerplate",
+  "version": "1.0.0",
+  "license": "BSD",
+  "description": "Quick Front-End Boilerplate using AngularJS, Sass and Gulp.",
+  "authors": [
+    "Argetloum <florian.mithieux@gmail.com>"
+  ],
+  "keywords": [
+    "Angular",
+    "browserify",
+    "gulp",
+    "polymer"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "~2.7.1",
+    "jquery": "~2.1.0",
+    "bootstrap-sass": "twbs/bootstrap-sass#~3.1.1"
+  },
+  "overrides": {
+    "modernizr": {
+      "main": "modernizr.js"
+    }
+  }
+}
