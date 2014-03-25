@@ -1,6 +1,6 @@
 # JSBoilerplate [![Build Status](https://travis-ci.org/Argetloum/JSBoilerplate.png)](https://travis-ci.org/Argetloum/JSBoilerplate)
 
-Quick Front-End Boilerplate using jQuery, Sass and Gulp.
+Quick Front-End Boilerplate using jQuery, Coffeescript, Sass and Gulp.
 
 JavaScript task running, build processes, auto-minification and file concatenation, wrapped with an enhanced HTML5 boilerplated.
 
@@ -21,6 +21,7 @@ Get started with the boilerplate:
 Here are some of the main features of the boilerplate:
 
 * jQuery lib
+* CoffeeScript
 * HTML5 semantics
 * Baseline HTML5 features, DNS prefetching, responsive meta
 * Encourages one-file CSS/JS in the view (HTML) for performance
@@ -44,6 +45,8 @@ Here are some of the main features of the boilerplate:
 │   ├── favicon.ico
 │   └── index.html
 ├── src
+│   ├── coffee
+│   │   └── app.coffee
 │   ├── js
 │   │   └── app.js
 │   └── scss

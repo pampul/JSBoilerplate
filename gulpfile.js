@@ -11,10 +11,17 @@ var rename = require('gulp-rename');
 var watch = require('gulp-watch');
 var notify = require('gulp-notify');
 var concatCSS = require('gulp-concat-css');
+var coffee = require('gulp-coffee');
+var gutil = require('gulp-util');
 
 var paths = {
   bowerCopy: {
     dest: 'app/assets/components'
+  },
+
+  coffee: {
+    src: 'src/coffee/*.coffee',
+    dest: 'src/js/'
   },
 
   scripts: {
@@ -53,6 +60,10 @@ var paths = {
     js: [
       'src/js/app.js',
       'src/js/**/*.js'
+    ],
+    coffee: [
+      'src/coffee/app.coffee',
+      'src/coffee/**/*.coffee'
     ]
   }
 };
@@ -84,6 +95,20 @@ gulp.task('styles-one-time', function () {
     .pipe(rename({suffix: '.min'}))
     .pipe(minifyCSS())
     .pipe(gulp.dest(paths.scss.dest));
+});
+
+/**
+ * Coffee tasks
+ */
+gulp.task('coffee', function () {
+  gulp.src(paths.watch.coffee)
+    .pipe(watch(function (files) {
+      gulp.src(paths.coffee.src)
+        .pipe(coffee({
+          bare: true
+        }).on('error', gutil.log))
+        .pipe(gulp.dest(paths.coffee.dest));
+    }));
 });
 
 /**
@@ -144,6 +169,6 @@ gulp.task('bowerFiles', function () {
   bowerFiles().pipe(gulp.dest(paths.bowerCopy.dest))
 });
 
-gulp.task('default', ['styles', 'js', 'bowerFiles']);
+gulp.task('default', ['styles', 'coffee', 'js', 'bowerFiles']);
 
 gulp.task('prod', ['styles-one-time', 'js-one-time', 'images', 'lint']);
