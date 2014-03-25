@@ -144,6 +144,6 @@ gulp.task('bowerFiles', function () {
   bowerFiles().pipe(gulp.dest(paths.bowerCopy.dest))
 });
 
-gulp.task('default', ['styles', 'js']);
+gulp.task('default', ['styles', 'js', 'bowerFiles']);
 
 gulp.task('prod', ['styles-one-time', 'js-one-time', 'images', 'lint']);
