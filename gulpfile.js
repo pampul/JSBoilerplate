@@ -13,6 +13,7 @@ var notify = require('gulp-notify');
 var concatCSS = require('gulp-concat-css');
 var coffee = require('gulp-coffee');
 var gutil = require('gulp-util');
+var stylish = require('jshint-stylish');
 
 var paths = {
   bowerCopy: {
@@ -159,7 +160,7 @@ gulp.task('images', function () {
 gulp.task('lint', function () {
   gulp.src(paths.scripts.jsHint)
     .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+    .pipe(jshint.reporter(stylish));
 });
 
 /**
