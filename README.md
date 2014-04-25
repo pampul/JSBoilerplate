@@ -1,4 +1,4 @@
-# JSBoilerplate [![Build Status](https://travis-ci.org/Argetloum/JSBoilerplate.png)](https://travis-ci.org/Argetloum/JSBoilerplate)
+# JSBoilerplate [![Build Status](https://travis-ci.org/Argetloum/JSBoilerplate.png)](https://travis-ci.org/Argetloum/JSBoilerplate) <img src="http://img.shields.io/badge/Built%20with-Gulp-red.svg" />
 
 Quick Front-End Boilerplate using jQuery, Coffeescript, Sass and Gulp.
 
