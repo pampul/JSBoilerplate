@@ -19,6 +19,11 @@ node_modules
 ## EditorConfig
 .idea
 
+## App
+app/assets/js
+app/assets/css
+app/assets/components
+
 ## Bower
 src/components
 
