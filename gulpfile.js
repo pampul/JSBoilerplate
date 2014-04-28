@@ -5,7 +5,6 @@ var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
-var bowerFiles = require('gulp-bower-files');
 var minifyCSS = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var watch = require('gulp-watch');
@@ -16,9 +15,6 @@ var gutil = require('gulp-util');
 var stylish = require('jshint-stylish');
 
 var paths = {
-  bowerCopy: {
-    dest: 'app/assets/components'
-  },
 
   coffee: {
     src: 'src/coffee/*.coffee',
@@ -69,28 +65,10 @@ var paths = {
   }
 };
 
-
-/**
- * Stylesheets tasks
- */
-gulp.task('styles', function () {
-  gulp.src(paths.watch.styles)
-    .pipe(watch(function (files) {
-      gulp.src(paths.scss.src).pipe(sass())
-        .pipe(gulp.dest(paths.scss.dest))
-        .pipe(concatCSS("styles.css"))
-        .pipe(gulp.dest(paths.scss.finalDest))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(minifyCSS())
-        .pipe(gulp.dest(paths.scss.finalDest));
-    }));
-
-});
-
 /**
  * Stylesheets one time task
  */
-gulp.task('styles-one-time', function () {
+gulp.task('styles', function () {
   return gulp.src(paths.scss.src).pipe(sass())
     .pipe(gulp.dest(paths.scss.dest))
     .pipe(concatCSS("styles.css"))
@@ -104,21 +82,7 @@ gulp.task('styles-one-time', function () {
  * Coffee tasks
  */
 gulp.task('coffee', function () {
-  gulp.src(paths.watch.coffee)
-    .pipe(watch(function (files) {
-      gulp.src(paths.coffee.src)
-        .pipe(coffee({
-          bare: true
-        }).on('error', gutil.log))
-        .pipe(gulp.dest(paths.coffee.dest));
-    }));
-});
-
-/**
- * Coffee tasks
- */
-gulp.task('coffee-one-time', function () {
-  gulp.src(paths.coffee.src)
+  return gulp.src(paths.coffee.src)
     .pipe(coffee({
       bare: true
     }).on('error', gutil.log))
@@ -129,24 +93,6 @@ gulp.task('coffee-one-time', function () {
  * Javascript tasks
  */
 gulp.task('js', function () {
-  gulp.src(paths.watch.js)
-    .pipe(watch(function (files) {
-      gulp.src(paths.scripts.src)
-        .pipe(concat(paths.scripts.dest))
-        .pipe(gulp.dest(paths.scripts.dir));
-
-      gulp.src(paths.scripts.fullDir)
-        .pipe(uglify({outSourceMap: false}))
-        .pipe(concat("scripts.min.js"))
-        .pipe(gulp.dest(paths.scripts.dir));
-    }));
-});
-
-
-/**
- * Javascript one time tasks
- */
-gulp.task('js-one-time', function () {
   gulp.src(paths.scripts.src)
     .pipe(concat(paths.scripts.dest))
     .pipe(gulp.dest(paths.scripts.dir));
@@ -155,6 +101,15 @@ gulp.task('js-one-time', function () {
     .pipe(uglify({outSourceMap: false}))
     .pipe(concat("scripts.min.js"))
     .pipe(gulp.dest(paths.scripts.dir));
+});
+
+/**
+ * Watch JS
+ */
+gulp.task('watch', function () {
+  gulp.watch(paths.watch.js, ['js']);
+  gulp.watch(paths.watch.coffee, ['coffee']);
+  gulp.watch(paths.watch.styles, ['styles']);
 });
 
 /**
@@ -176,13 +131,9 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter(stylish));
 });
 
-/**
- * Bower task
- */
-gulp.task('bowerFiles', function () {
-  bowerFiles().pipe(gulp.dest(paths.bowerCopy.dest))
-});
 
-gulp.task('default', ['styles', 'coffee', 'js']);
+gulp.task('default', ['watch']);
 
-gulp.task('prod', ['styles-one-time', 'coffee-one-time', 'js-one-time', 'images']);
+gulp.task('lint', ['lint']);
+
+gulp.task('prod', ['styles', 'coffee', 'js', 'images']);
