@@ -1,6 +1,6 @@
 {
-  "name": "AngularBoilerplate",
-  "description": "Quick Front-End Boilerplate using AngularJS, Sass and Gulp.",
+  "name": "JSBoilerplate",
+  "description": "Quick Front-End Boilerplate using Coffee, Sass and Gulp.",
   "copyright": "2014",
   "version": "1.0.0",
   "author": " <florian.mithieux@gmail.com>",
@@ -8,6 +8,9 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/Argetloum/AngularBoilerplate.git"
+  },
+  "config": {
+    "unsafe-perm":true
   },
   "devDependencies": {
     "bower": "~1.2.6",
@@ -28,6 +31,6 @@
     "jshint-stylish": "~0.1.5"
   },
   "scripts": {
-    "postinstall": "node_modules/.bin/bower install"
+    "postinstall": "./node_modules/.bin/bower install && ./node_modules/.bin/gulp prod"
   }
 }

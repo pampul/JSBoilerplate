@@ -12,9 +12,7 @@ JavaScript task running, build processes, auto-minification and file concatenati
 Get started with the boilerplate:
 
 1. Clone the git repo — `git clone https://github.com/Argetloum/JSBoilerplate.git` and checkout the tagged release you need.
-2. Execute in the shell `sudo npm install` to install each node.js dependencies, needed for [Gulp.](http://gulpjs.com/)
-3. Execute in the shell `bower install` to install each front-end dependencies.
-4. Execute in the shell `gulp` to generate the stylesheets and scripts files in the `app/assets/` folder.
+2. Execute in the shell `npm install` to install each node.js dependencies, needed for [Gulp.](http://gulpjs.com/)
 
 ## Features
 

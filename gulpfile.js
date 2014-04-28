@@ -93,9 +93,11 @@ gulp.task('styles', function () {
 gulp.task('styles-one-time', function () {
   return gulp.src(paths.scss.src).pipe(sass())
     .pipe(gulp.dest(paths.scss.dest))
+    .pipe(concatCSS("styles.css"))
+    .pipe(gulp.dest(paths.scss.finalDest))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifyCSS())
-    .pipe(gulp.dest(paths.scss.dest));
+    .pipe(gulp.dest(paths.scss.finalDest));
 });
 
 /**
@@ -110,6 +112,17 @@ gulp.task('coffee', function () {
         }).on('error', gutil.log))
         .pipe(gulp.dest(paths.coffee.dest));
     }));
+});
+
+/**
+ * Coffee tasks
+ */
+gulp.task('coffee-one-time', function () {
+  gulp.src(paths.coffee.src)
+    .pipe(coffee({
+      bare: true
+    }).on('error', gutil.log))
+    .pipe(gulp.dest(paths.coffee.dest));
 });
 
 /**
@@ -170,6 +183,6 @@ gulp.task('bowerFiles', function () {
   bowerFiles().pipe(gulp.dest(paths.bowerCopy.dest))
 });
 
-gulp.task('default', ['styles', 'coffee', 'js', 'bowerFiles']);
+gulp.task('default', ['styles', 'coffee', 'js']);
 
-gulp.task('prod', ['styles-one-time', 'js-one-time', 'images', 'lint']);
+gulp.task('prod', ['styles-one-time', 'coffee-one-time', 'js-one-time', 'images']);

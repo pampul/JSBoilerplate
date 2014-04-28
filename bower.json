@@ -1,8 +1,8 @@
 {
-  "name": "AngularBoilerplate",
+  "name": "JSBoilerplate",
   "version": "1.0.0",
   "license": "BSD",
-  "description": "Quick Front-End Boilerplate using AngularJS, Sass and Gulp.",
+  "description": "Quick Front-End Boilerplate using Coffee, Sass and Gulp.",
   "authors": [
     "Argetloum <florian.mithieux@gmail.com>"
   ],
