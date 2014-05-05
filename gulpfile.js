@@ -93,14 +93,13 @@ gulp.task('coffee', function () {
  * Javascript tasks
  */
 gulp.task('js', function () {
-  gulp.src(paths.scripts.src)
+  return gulp.src(paths.scripts.src)
     .pipe(concat(paths.scripts.dest))
-    .pipe(gulp.dest(paths.scripts.dir));
-
-  gulp.src(paths.scripts.fullDir)
-    .pipe(uglify({outSourceMap: false}))
-    .pipe(concat("scripts.min.js"))
-    .pipe(gulp.dest(paths.scripts.dir));
+    .pipe(gulp.dest(paths.scripts.dir))
+    .pipe(gulp.src(paths.scripts.fullDir)
+      .pipe(uglify({outSourceMap: false}))
+      .pipe(concat("scripts.min.js"))
+      .pipe(gulp.dest(paths.scripts.dir)));
 });
 
 /**
